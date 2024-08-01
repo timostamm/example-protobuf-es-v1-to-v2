@@ -3,11 +3,6 @@ version: v2
 inputs:
   - directory: proto
 plugins:
-  - local: "node_modules/@bufbuild/protoc-gen-esv1/bin/protoc-gen-es"
-    opt:
-      - target=ts
-      - rewrite_imports=@bufbuild/protobuf:@bufbuild/protobufv1
-    out: src/genv1
   - local: protoc-gen-es
     opt:
       - target=ts

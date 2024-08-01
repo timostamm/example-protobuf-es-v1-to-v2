@@ -86,3 +86,14 @@ import {User as UserV1} from "./genv1/example_pb";
 ```
 
 Now you can migrate the project piece by piece. 
+
+See the full diff [here](https://github.com/timostamm/example-protobuf-es-v1-to-v2/commit/1839a854755f476b2f723b29ca9a01ca269e13ee).
+
+## Remove v1
+
+Finally, remove v1 from the project:
+- Delete old generated code from `src/genv1`
+- Remove the old plugin from `buf.gen.yaml`
+- Remove the old dependencies from `package.json`
+
+See all commits [here](https://github.com/timostamm/example-protobuf-es-v1-to-v2/commits/main/).

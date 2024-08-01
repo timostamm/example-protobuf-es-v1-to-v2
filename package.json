@@ -1,0 +1,17 @@
+{
+  "name": "example-protobuf-es-v1-to-v2",
+  "version": "0",
+  "scripts": {
+    "test": "tsx src/test.ts",
+    "pretest": "npm run generate && npm run lint",
+    "generate": "buf generate --clean",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@bufbuild/protobuf": "^1.0.0",
+    "@bufbuild/protoc-gen-es": "^1.0.0",
+    "@bufbuild/buf": "^1.35.1",
+    "tsx": "^4.16.4",
+    "typescript": "^5.5.4"
+  }
+}

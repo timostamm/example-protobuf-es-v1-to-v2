@@ -44,3 +44,45 @@ After generating code with `npx buf generate`, we update the imports in the proj
 - import {User} from "./gen/example_pb";
 + import {User as UserV1} from "./genv1/example_pb";
 ```
+
+See the full diff [here](https://github.com/timostamm/example-protobuf-es-v1-to-v2/commit/ba8ab85733fb06d78c5b2ed7a0ccb91960f9fda2).
+
+## Add v2
+
+Add v2 to `package.json`:
+
+```diff
+{
+  "dependencies": {
++   "@bufbuild/protobuf": "^2.0.0",
++   "@bufbuild/protoc-gen-es": "^2.0.0",
+    "@bufbuild/protobufv1": "npm:@bufbuild/protobuf@^1.10.0",
+    "@bufbuild/protoc-gen-esv1": "npm:@bufbuild/protoc-gen-es@^1.10.0",
+  }
+}
+```
+
+And `buf.gen.yaml`:
+
+```diff
+plugins:
+  - local: "node_modules/@bufbuild/protoc-gen-esv1/bin/protoc-gen-es"
+    opt:
+      - target=ts
+      - rewrite_imports=@bufbuild/protobuf:@bufbuild/protobufv1
+    out: src/genv1
++ - local: protoc-gen-es
++   opt:
++     - target=ts
++   out: src/gen
+```
+
+After generating code with `npx buf generate`, we can use both versions in parallel:
+
+```diff
+import {User as UserV1} from "./genv1/example_pb";
++ import {UserSchema} from "./gen/example_pb";
++ import {create} from "@bufbuild/protobuf";
+```
+
+Now you can migrate the project piece by piece. 

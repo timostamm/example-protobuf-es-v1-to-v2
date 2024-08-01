@@ -8,8 +8,8 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "@bufbuild/protobuf": "^1.0.0",
-    "@bufbuild/protoc-gen-es": "^1.0.0",
+    "@bufbuild/protobufv1": "npm:@bufbuild/protobuf@^1.10.0",
+    "@bufbuild/protoc-gen-esv1": "npm:@bufbuild/protoc-gen-es@^1.10.0",
     "@bufbuild/buf": "^1.35.1",
     "tsx": "^4.16.4",
     "typescript": "^5.5.4"
